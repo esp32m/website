@@ -40,7 +40,7 @@ $ git clone https://github.com/esp32m/core.git
 * Make sure you are in the `core/examples/basic` directory, and run this command:
 
 ```shell
-$ python ../../esp32m.py build flash monitor
+$ python ../../esp32m.py --path idf /path/to/esp-idf build flash monitor
 ```
 In most cases it should be able to detect your serial port automatically. If not, just pass it int the command line using the `--port` switch, for example: `--port /dev/ttyUSB0`. 
 Within a couple of minutes, you should see something like this in the terminal: 
