@@ -30,6 +30,8 @@ Clone ESP32 Manager core repository:
 
 ```shell
 $ git clone https://github.com/esp32m/core.git
+$ cd core
+$ git submodule update --init --recursive
 ```
 
 ## Compiling and running example
