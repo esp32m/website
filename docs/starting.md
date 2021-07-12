@@ -15,7 +15,7 @@ You need to have the following software installed:
 * [Python 3.x](//www.python.org/downloads/) or more recent.
 * [Git 2.x](//git-scm.com/downloads) or more recent.
 * [NodeJS 16.x](//nodejs.org/en/) or more recent.
-* The latest ESP-IDF, installation instructions are [here](//docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html). Make sure you follow the first four steps in the aticle, including the `Step 4. Set up the environment variables`. It is not necessary to follow subsequent steps, although you're welcome to do it to make sure your setup is correct and ready for ESP32 Manager.
+* The latest ESP-IDF, installation instructions are [here](//docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html). Make sure you follow the first four steps in the article, including the `Step 4. Set up the environment variables`. It is not necessary to follow subsequent steps, although you're welcome to do it to make sure your setup is correct and ready for ESP32 Manager.
 * [Yarn Classic 1.x](//classic.yarnpkg.com/en/docs/install/#windows-stable) - only needed if you want to use UI.
 
 

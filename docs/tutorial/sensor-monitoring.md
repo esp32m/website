@@ -21,7 +21,7 @@ First, refer to [MQTT setup](/docs/tutorial/mqtt) tutorial page to enable MQTT d
 * **message**: esp32m,unit=basic,device=BME280 temperature=33.64
  
 #### WebSockets
-Refer to [WebSocksts API reference](/docs/reference/api#websockets) for general guidelines. Getting sensor readings via WebSockets is as easy as issuing a `state-get` request, for example:
+Refer to [WebSockets API reference](/docs/reference/api#websockets) for general guidelines. Getting sensor readings via WebSockets is as easy as issuing a `state-get` request, for example:
 
 ```json
 {"type":"request","target":"BME280","name":"state-get"}

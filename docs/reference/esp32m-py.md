@@ -40,7 +40,7 @@ The tool makes use of external programs, such as `yarn`, `idf.py`, `git`, `clang
 }
 ```
 
-* **idf-tools** is a path to `.espressif` folder that is created by the ESP-IDF during installation. If you followed [ESP-IDF installation instructions](//docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#installation-step-by-step), it will be auto-detected, but if you changed the default path during the installation, or decided not to export ESP-IDF environment variables, you will need to speciry it manually.
+* **idf-tools** is a path to `.espressif` folder that is created by the ESP-IDF during installation. If you followed [ESP-IDF installation instructions](//docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#installation-step-by-step), it will be auto-detected, but if you changed the default path during the installation, or decided not to export ESP-IDF environment variables, you will need to specify it manually.
 
 ## Commands
 

@@ -54,7 +54,7 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'GitHib',
+              label: 'GitHub',
               href: 'https://github.com/esp32m/core',
             },
             {

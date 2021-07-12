@@ -10,7 +10,7 @@ ESP32 Manager supports limited number of peripheral devices out-of-the-box. If y
 - port available source code yourself (should be not too difficult);
 - write driver from scratch using device datasheet.
 
-It may be possble to integrate Arduino-based device drivers by adding esp32m-arduino bridge to the ESP32 Manager. There's conceptual understanting of how to make it possible, but we need to see if there's any demand.
+It may be possible to integrate Arduino-based device drivers by adding esp32m-arduino bridge to the ESP32 Manager. There's conceptual understanding of how to make it possible, but we need to see if there's any demand.
 
 ## Relay
 
@@ -171,7 +171,7 @@ where X is [0..3] - see above
 
 ## Valve
 
-The driver can manage DC motorized ball valves controlled by polarity change (2 control wires), or by connecting (+) power line to open/close channel (3 contol wires).
+The driver can manage DC motorized ball valves controlled by polarity change (2 control wires), or by connecting (+) power line to open/close channel (3 control wires).
 The driver requires 2 additional digital pins to sense valve state (**Pin O** - open sensor, **Pin C** - close sensor):
 
 | Pin O | Pin C | Valve state        |
@@ -418,7 +418,7 @@ Response:
 {"type":"response","source":"FC-37","name":"state-get","data":[t,v]}
 ```
 
-- **t** is the time elapsed since the last succesful reading (ms);
+- **t** is the time elapsed since the last successful reading (ms);
 - **v** is the coefficient between 0 and 1, where 0 stands for no rain, and 1 stands for maximum possible rainfall.
 
 ## Flow meter
@@ -427,7 +427,7 @@ Response:
 
 ![](../../static/img/yf-b10.webp)
 
-There are different models, for various pipe sizes, and they have different relationship beween the flow and the number of pulses, usually a linear equation :
+There are different models, for various pipe sizes, and they have different relationship between the flow and the number of pulses, usually a linear equation :
 
 > **F = A \* Q - B**
 
@@ -496,7 +496,7 @@ Response:
 {"type":"response","source":"flow","name":"state-get","data":[t,f,c]}
 ```
 
-- **t** is the time elapsed since the last succesful reading (ms);
+- **t** is the time elapsed since the last successful reading (ms);
 - **f** is the current flow rate in l/min;
 - **c** is the total volume of liquid passed through the meter, in liters.
 
@@ -506,7 +506,7 @@ Response:
 
 ![](../../static/img/pressure-sensor.webp)
 
-There are different models, and they have different relationship beween the pressure and the voltage, usually expressed as a linear equation :
+There are different models, and they have different relationship between the pressure and the voltage, usually expressed as a linear equation :
 
 > **Vout = Vcc _ ( A _ P + B )**
 
@@ -577,7 +577,7 @@ Response:
 {"type":"response","source":"pressure","name":"state-get","data":[t,p]}
 ```
 
-- **t** is the time elapsed since the last succesful reading (ms);
+- **t** is the time elapsed since the last successful reading (ms);
 - **p** is the pressure in Atm;
 
 ## INA series voltage/current sensor
@@ -626,7 +626,7 @@ Response:
 - **svX** is the channel X shunt voltage;
 - **cX** is the channel X current.
 
-## DDS238 electicity meter
+## DDS238 electricity meter
 
 `esp32m` natively supports this energy meter over MODBUS/RTU protocol:
 

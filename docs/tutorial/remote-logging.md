@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Remote Logging
 
-ESP32 Manager contains a tiny logger module that is able to send output to multiple independend appenders. esp32m library contains, among others, 2 appenders able to send log messages to remote servers for storage and analysis. This feature may be extremely helpful when debugging applications, especially when no physical access to the ESP32 chip or its UART0 is available.
+ESP32 Manager contains a tiny logger module that is able to send output to multiple independent appenders. esp32m library contains, among others, 2 appenders able to send log messages to remote servers for storage and analysis. This feature may be extremely helpful when debugging applications, especially when no physical access to the ESP32 chip or its UART0 is available.
 
 ## Logging to **rsyslog**
 
