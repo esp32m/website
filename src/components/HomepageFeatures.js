@@ -26,12 +26,12 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_visual_data_re_mxxo.svg').default,
     description: (
       <>
-        Monitor your sensors in UI, collect readings in <b><a href="//www.influxdata.com/">Influx</a></b> and visualize in <b><a href="//www.influxdata.com/time-series-platform/chronograf/">Chronograf</a></b>. Feed the data into your own application via MQTT / Websockets API.
+        Monitor your sensors in UI, collect readings in <b><a href="//www.influxdata.com/">Influx</a></b> and visualize in <b><a href="//www.influxdata.com/time-series-platform/chronograf/">Chronograf</a></b>. Feed the data into your own application via MQTT / WebSockets API.
       </>
     ),
   },
   {
-    title: 'Remtote loggging and debugging',
+    title: 'Remote logging and debugging',
     Svg: require('../../static/img/undraw_programming_2svr.svg').default,
     description: (
       <>
@@ -44,7 +44,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_multitasking_hqg3.svg').default,
     description: (
       <>
-        Interact with many different devices from separate threads at the same time, even on a single bus like <b>I2C</b>. Leave synchronizartion, locking and handling race conditions to the framework.
+        Interact with many different devices from separate threads at the same time, even on a single bus like <b>I2C</b>. Leave synchronization, locking and handling race conditions to the framework.
       </>
     ),
   },
