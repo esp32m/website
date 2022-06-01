@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -14,11 +14,12 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.3",
-    "@docusaurus/plugin-google-gtag": "^2.0.0-beta.3",
-    "@docusaurus/preset-classic": "2.0.0-beta.3",
-    "@mdx-js/react": "^1.6.21",
-    "@svgr/webpack": "^5.5.0",
+    "@algolia/client-search": "^4.13.0",
+    "@docusaurus/core": "2.0.0-beta.18",
+    "@docusaurus/plugin-google-gtag": "^2.0.0-beta.18",
+    "@docusaurus/preset-classic": "2.0.0-beta.18",
+    "@mdx-js/react": "1.6.22",
+    "@svgr/webpack": "^6.2.1",
     "clsx": "^1.1.1",
     "file-loader": "^6.2.0",
     "react": "^17.0.1",
@@ -38,11 +39,11 @@
     ]
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.0.0-beta.1",
-    "@tsconfig/docusaurus": "^1.0.2",
-    "@types/react": "^17.0.13",
-    "@types/react-helmet": "^6.1.1",
-    "@types/react-router-dom": "^5.1.7",
-    "typescript": "^4.3.4"
+    "@docusaurus/module-type-aliases": "^2.0.0-beta.18",
+    "@tsconfig/docusaurus": "^1.0.5",
+    "@types/react": "^17.0.43",
+    "@types/react-helmet": "^6.1.5",
+    "@types/react-router-dom": "^5.3.3",
+    "typescript": "^4.6.3"
   }
 }

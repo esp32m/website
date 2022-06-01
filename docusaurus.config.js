@@ -10,9 +10,6 @@ module.exports = {
   organizationName: 'esp32m', // Usually your GitHub org/user name.
   projectName: 'esp32m.github.io', // Usually your repo name.
   themeConfig: {
-    gtag: {
-      trackingID: 'G-4LC1CTFLW8',
-    },
     navbar: {
       title: 'ESP32 Manager',
       logo: {
@@ -94,6 +91,9 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        gtag: {
+          trackingID: 'G-4LC1CTFLW8',
         },
       },
     ],

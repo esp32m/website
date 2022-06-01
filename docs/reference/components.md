@@ -409,3 +409,28 @@ useModbusScanner();
 ```
 
 ![](../../static/img/modbus-scanner.png)
+
+### Diagnostic LED
+
+This component is used to quickly determine the state of the MCU and diagnose possible issues using a single LED. 
+The LED communicates the state of critical components by a number of flashes that correspond to a state code for a component.
+A component that wants to use this feature defines fixed number of state codes in the 1..255 range (it is better to keep it under 10).
+We recommend to use the following codes:
+* 1 - the component works normally;
+* 2 - 4 - the component is in the intermediate state (in the process of performing an operation that is going to result in success or failure, for example, connecting to server);
+* 4 - 6 - the component is experiencing a temporary failure and is going to try again soon;
+* 7 and above - the component failed permanently.
+When the state change occurs, the component fires `event::Diag` event with the ID and the state code. The ID is a `uint8_t` and must be unique across the components using this feature. The ID also defines the order of the component in the process of communication. 
+
+For example, 
+
+Usage:
+
+```cpp
+#include <esp32m/debug/sysled.hpp>
+
+...
+
+debug::useSysled();
+```
+This example assumes LED is connected to IO2. If you use different pin - just pass it to `debug::useSysled()`.
