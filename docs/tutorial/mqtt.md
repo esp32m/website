@@ -28,9 +28,9 @@ net::useMqtt();
 In the UI:
 
 ```typescript
-import { useMqtt } from "esp32m/ui";
+import { use, Mqtt } from "esp32m/ui";
 
-useMqtt();
+use(Mqtt);
 ```
 
 By default, MQTT client module looks for `mqtt.lan` name on your local network. You can just add this name to the `/etc/hosts` file on the machine with the MQTT server, or add static name to your local DNS. Alternatively, you can pass URL of your MQTT server to the `net::useMqtt();` command, it would be something like `mqtt://192.168.0.10`. Another option is to configure MQTT client from within the `esp32m UI`: click on the `MQTT Client` link in the sidebar menu, enter the details and click Save button:

@@ -62,11 +62,11 @@ By default, the state of the relay is preserved across reboots, i.e. if the rela
 In the UI:
 
 ```typescript
-import { useRelay } from "@esp32m/ui";
+import { use, Relay } from "@esp32m/ui";
 
 ...
 
-useRelay([["my-relay", "Relay Descriptive Name"],["my-latching-relay", "Relay Descriptive Name 2"]]);
+use(Relay([["my-relay", "Relay Descriptive Name"],["my-latching-relay", "Relay Descriptive Name 2"]]));
 ```
 
 ![relays](../../static/img/relays.png)
@@ -126,11 +126,11 @@ dev::useHBridge("m2", gpio::pin(GPIO_NUM_23), gpio::pin(GPIO_NUM_27));
 In the UI:
 
 ```typescript
-import { useHbridge } from "@esp32m/ui";
+import { use, Hbridge } from "@esp32m/ui";
 
 ...
 
-useHbridge([["m1", "Motor 1"], ["m2", "Motor 2"]]);
+use(Hbridge([["m1", "Motor 1"], ["m2", "Motor 2"]]));
 ```
 
 ![hbridge](../../static/img/hbridge.png)
@@ -226,11 +226,11 @@ dev::useValve("garden", rPow, rDir, gpio::pin(GPIO_NUM_23), gpio::pin(GPIO_NUM_2
 In the UI:
 
 ```typescript
-import { useValve } from "@esp32m/ui";
+import { use, Valve } from "@esp32m/ui";
 
 ...
 
-useValve("main", "Water main");
+use(Valve("main", "Water main"));
 ```
 
 ![valve](../../static/img/valve.png)
@@ -273,11 +273,11 @@ dev::useDsts(GPIO_NUM_13);
 In the UI:
 
 ```typescript
-import { useDsts } from "@esp32m/ui";
+import { use, Dsts } from "@esp32m/ui";
 
 ...
 
-useDsts();
+use(Dsts());
 ```
 
 ![](../../static/img/dsts.png)
@@ -320,11 +320,11 @@ dev::useBuzzer(GPIO_NUM_15);
 In the UI:
 
 ```typescript
-import { useBuzzer } from "@esp32m/ui";
+import { use, Buzzer } from "@esp32m/ui";
 
 ...
 
-useBuzzer();
+use(Buzzer());
 ```
 
 ![](../../static/img/buzzer.png)
@@ -360,11 +360,11 @@ dev::useBme280();
 In the UI:
 
 ```typescript
-import { useBme280 } from "@esp32m/ui";
+import { use, Bme280 } from "@esp32m/ui";
 
 ...
 
-useBme280();
+use(Bme280());
 ```
 
 ![](../../static/img/bme280.png)
@@ -398,11 +398,11 @@ dev::useFc37(gpio::pin(GPIO_NUM_33));
 In the UI:
 
 ```typescript
-import { useFc37 } from "@esp32m/ui";
+import { use, Fc37 } from "@esp32m/ui";
 
 ...
 
-useFc37();
+use(Fc37());
 ```
 
 ![](../../static/img/fc37.png)
@@ -476,11 +476,11 @@ new MyFlowSensorMain("flow", gpio::pin(GPIO_NUM_4));
 In the UI:
 
 ```typescript
-import { useFlowSensor } from "@esp32m/ui";
+import { use, FlowSensor } from "@esp32m/ui";
 
 ...
 
-useFlowSensor("flow", "Main flow");
+use(FlowSensor("flow", "Main flow"));
 ```
 
 ![](../../static/img/flow-meter.png)
@@ -557,11 +557,11 @@ new MyPressureSensor("pressure", gpio::pin(GPIO_NUM_36));
 In the UI:
 
 ```typescript
-import { usePressureSensor } from "@esp32m/ui";
+import { use, PressureSensor } from "@esp32m/ui";
 
 ...
 
-usePressureSensor("pressure", "Pressure sensor");
+use(PressureSensor("pressure", "Pressure sensor"));
 ```
 
 ![](../../static/img/pressure.png)
@@ -597,11 +597,11 @@ dev::useIna3221();
 In the UI:
 
 ```typescript
-import { useIna3221 } from "@esp32m/ui";
+import { use, Ina3221 } from "@esp32m/ui";
 
 ...
 
-useIna3221();
+use(Ina3221());
 ```
 
 ![](../../static/img/ina3221.png)
@@ -651,11 +651,11 @@ dev::useDds238();
 In the UI:
 
 ```typescript
-import { useDds238 } from "@esp32m/ui";
+import { use, Dds238 } from "@esp32m/ui";
 
 ...
 
-useDds238();
+use(Dds238());
 ```
 
 ![](../../static/img/dds238.png)

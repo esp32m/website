@@ -230,11 +230,11 @@ net::wifi::addAccessPoint("SSID", "password");
 In the UI:
 
 ```typescript
-import { useWifi } from "@esp32m/ui";
+import { use, Wifi } from "@esp32m/ui";
 
 ...
 
-useWifi();
+use(Wifi);
 ```
 
 ### Captive portal
@@ -244,9 +244,9 @@ Captive portal functionality is included in the core Wifi module and there are n
 Additional steps are needed to include Captive portal in the UI:
 
 ```typescript
-import { useCaptivePortal } from "@esp32m/ui";
+import { use, CaptivePortal } from "@esp32m/ui";
 
-useCaptivePortal();
+use(CaptivePortal);
 ```
 
 ### Mqtt
@@ -286,11 +286,11 @@ debug::useGPIO();
 In the UI:
 
 ```typescript
-import { useGpio } from "@esp32m/ui";
+import { use, DebugGpio } from "@esp32m/ui";
 
 ...
 
-useGpio();
+use(DebugGpio);
 ```
 
 ![](../../static/img/gpio.png)
@@ -318,11 +318,11 @@ debug::useTasks();
 In the UI:
 
 ```typescript
-import { useTasks } from "@esp32m/ui";
+import { use, DebugTasks } from "@esp32m/ui";
 
 ...
 
-useTasks();
+use(Tasks);
 ```
 
 ![](../../static/img/tasks.png)
@@ -348,11 +348,11 @@ bus::scanner::useOwb();
 In the UI:
 
 ```typescript
-import { useOwbScanner } from "@esp32m/ui";
+import { use, OwbScanner } from "@esp32m/ui";
 
 ...
 
-useOwbScanner();
+use(OwbScanner);
 ```
 
 ![](../../static/img/owb-scanner.png)
@@ -374,11 +374,11 @@ bus::scanner::useI2C();
 In the UI:
 
 ```typescript
-import { useI2CScanner } from "@esp32m/ui";
+import { use, I2CScanner } from "@esp32m/ui";
 
 ...
 
-useI2CScanner();
+use(I2CScanner);
 ```
 
 ![](../../static/img/i2c-scanner.png)
@@ -401,11 +401,11 @@ bus::scanner::useModbus();
 In the UI:
 
 ```typescript
-import { useModbusScanner } from "@esp32m/ui";
+import { use, ModbusScanner } from "@esp32m/ui";
 
 ...
 
-useModbusScanner();
+use(ModbusScanner);
 ```
 
 ![](../../static/img/modbus-scanner.png)
