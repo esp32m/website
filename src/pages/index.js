@@ -25,6 +25,12 @@ function HomepageHeader() {
             to="/docs/starting">
             Quick Start
           </Link>
+          <div style={{width:48}}/>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/services">
+            Our Services
+          </Link>
         </div>
       </div>
     </header>
