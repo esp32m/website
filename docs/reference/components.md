@@ -149,10 +149,12 @@ void MyModule::DoIt() {
 
 A `Device` class is a descendant of `AppObject` that extends its functionality to poll device-specific sensors periodically and make sensor readings available over MQTT or by other means.
 Extend `Device` class and override its `virtual void pollSensors();` method that will be called periodically (typically once per second). Inside that method, call `sensor()` methods with the name of the sensor and its current reading.
+
 ```cpp
 void sensor(const char *sensor, const float value);
 void sensor(const char *sensor, const float value, const JsonObjectConst props);
 ```
+
 The second method allows to pass additional properties along with the reading, to further refine queries to the time series database.
 
 `pollSensors()` method is called from a single dedicated thread, therefore it is safe to access global resources from `pollSensors()` without additional synchronization (provided that these resources are not accessed by other threads, of course). This dedicated thread calls `pollSensors()` of every device sequentially. Therefore, it is recommended to avoid unnecessary delays in `pollSensors()`. If sgnificant time is required for a device to perform a reading, it is advised to move lengthy operations to separate threads.
@@ -205,14 +207,16 @@ Modbus driver allows to communicate with slave MODBUS devices over RS-485 transc
 ### Wifi
 
 WiFi component peforms the following functions:
-* manages connection lifecycle, finding available Access Points and making sure the connection is maintained at all times, reconnecting if necessary;
-* if no connection could be established, launches Access Point named after the application name, with Captive Portal to configure AP credentials manually;
-* synchronizes ESP32 time with NTP server (if Internet connection is available);
-* preserves configured APs to auto-connnect on the next boot;
-* provides information about Station and AP state to the UI and the API;
-* allows to scan for available Access Points from the UI or API.
-  
+
+- manages connection lifecycle, finding available Access Points and making sure the connection is maintained at all times, reconnecting if necessary;
+- if no connection could be established, launches Access Point named after the application name, with Captive Portal to configure AP credentials manually;
+- synchronizes ESP32 time with NTP server (if Internet connection is available);
+- preserves configured APs to auto-connnect on the next boot;
+- provides information about Station and AP state to the UI and the API;
+- allows to scan for available Access Points from the UI or API.
+
 Using WiFi component is simple:
+
 ```cpp
 #include <esp32m/net/wifi.hpp>
 
@@ -230,11 +234,11 @@ net::wifi::addAccessPoint("SSID", "password");
 In the UI:
 
 ```typescript
-import { use, Wifi } from "@esp32m/ui";
+import { startUi, Wifi } from "@esp32m/ui";
 
 ...
 
-use(Wifi);
+startUi({ plugins: [WiFi] });
 ```
 
 ### Captive portal
@@ -244,9 +248,9 @@ Captive portal functionality is included in the core Wifi module and there are n
 Additional steps are needed to include Captive portal in the UI:
 
 ```typescript
-import { use, CaptivePortal } from "@esp32m/ui";
+import { startUi, CaptivePortal } from "@esp32m/ui";
 
-use(CaptivePortal);
+startUi({ plugins: [CaptivePortal] });
 ```
 
 ### Mqtt
@@ -256,41 +260,39 @@ MQTT component manages connection to MQTT server, reconnects if necessary, provi
 
 ### [Over-the-air updates](/docs/tutorial/ota)
 
-
 ## Debugging
 
 ### GPIO
 
 GPIO debugger allows to control the mode of ESP32 I/O pins and change/monitor their state. GPIO debugger supports most of the ESP32 hardware features:
 
-* digital I/O with configurable pull-ups/pull-downs;
-* Analog-to-Digital Converter (ADC) with configurable attenuation;
-* Digital-to-Analog Converter (DAC) with configurable output voltage;
-* Pulse Counter with configurable noise filter, triggering edges and increment/decrement modes;
-* PWM generator (LEDC) with configurable duty cycle and frequency;
-* Sigma/Delta generator with configurable prescale and duty;
-* Cosine Wave generator with configurable amplitude, phase shift and frequency;
-* Touch Sensor with configurable threshold and charge/discharge speed.
-  
+- digital I/O with configurable pull-ups/pull-downs;
+- Analog-to-Digital Converter (ADC) with configurable attenuation;
+- Digital-to-Analog Converter (DAC) with configurable output voltage;
+- Pulse Counter with configurable noise filter, triggering edges and increment/decrement modes;
+- PWM generator (LEDC) with configurable duty cycle and frequency;
+- Sigma/Delta generator with configurable prescale and duty;
+- Cosine Wave generator with configurable amplitude, phase shift and frequency;
+- Touch Sensor with configurable threshold and charge/discharge speed.
 
 Usage:
 
 ```cpp
-#include <esp32m/debug/gpio.hpp>
+#include <esp32m/debug/pins.hpp>
 
 ...
 
-debug::useGPIO();
+debug::usePins();
 ```
 
 In the UI:
 
 ```typescript
-import { use, DebugGpio } from "@esp32m/ui";
+import { startUi, DebugPins } from "@esp32m/ui";
 
 ...
 
-use(DebugGpio);
+startUi({ plugins: [DebugPins] });
 ```
 
 ![](../../static/img/gpio.png)
@@ -298,10 +300,11 @@ use(DebugGpio);
 ### Tasks
 
 This component is a read-only task manager that shows running tasks and their properties:
-* task ID;
-* task name;
-* CPU usage;
-* stack high watermark.
+
+- task ID;
+- task name;
+- CPU usage;
+- stack high watermark.
 
 CPU usage may help determine tasks abusing the CPU. Stack high watermark shows the amount of stack space that has never been used by the task. This value may be used to optimise task stack size passed to [xTaskCreate](//docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/freertos.html#_CPPv411xTaskCreate14TaskFunction_tPCKcK8uint32_tPCv11UBaseType_tPC12TaskHandle_t). If the value is close to 0, it means that stack size for this task should be increased, otherwise the task risks running out of stack space. If the value is too big, it makes sense to decrease stack size to prevent memory wasting.
 
@@ -318,11 +321,11 @@ debug::useTasks();
 In the UI:
 
 ```typescript
-import { use, DebugTasks } from "@esp32m/ui";
+import { startUi, DebugTasks } from "@esp32m/ui";
 
 ...
 
-use(Tasks);
+startUi({ plugins: [DebugTasks] });
 ```
 
 ![](../../static/img/tasks.png)
@@ -348,11 +351,11 @@ bus::scanner::useOwb();
 In the UI:
 
 ```typescript
-import { use, OwbScanner } from "@esp32m/ui";
+import { startUi, OwbScanner } from "@esp32m/ui";
 
 ...
 
-use(OwbScanner);
+startUi({ plugins: [OwbScanner] });
 ```
 
 ![](../../static/img/owb-scanner.png)
@@ -374,11 +377,11 @@ bus::scanner::useI2C();
 In the UI:
 
 ```typescript
-import { use, I2CScanner } from "@esp32m/ui";
+import { startUi, I2CScanner } from "@esp32m/ui";
 
 ...
 
-use(I2CScanner);
+startUi({ plugins: [I2CScanner] });
 ```
 
 ![](../../static/img/i2c-scanner.png)
@@ -401,28 +404,29 @@ bus::scanner::useModbus();
 In the UI:
 
 ```typescript
-import { use, ModbusScanner } from "@esp32m/ui";
+import { startUi, ModbusScanner } from "@esp32m/ui";
 
 ...
 
-use(ModbusScanner);
+startUi({ plugins: [ModbusScanner] });
 ```
 
 ![](../../static/img/modbus-scanner.png)
 
 ### Diagnostic LED
 
-This component is used to quickly determine the state of the MCU and diagnose possible issues using a single LED. 
+This component is used to quickly determine the state of the MCU and diagnose possible issues using a single LED.
 The LED communicates the state of critical components by a number of flashes that correspond to a state code for a component.
 A component that wants to use this feature defines fixed number of state codes in the 1..255 range (it is better to keep it under 10).
 We recommend to use the following codes:
-* 1 - the component works normally;
-* 2 - 4 - the component is in the intermediate state (in the process of performing an operation that is going to result in success or failure, for example, connecting to server);
-* 4 - 6 - the component is experiencing a temporary failure and is going to try again soon;
-* 7 and above - the component failed permanently.
-When the state change occurs, the component fires `event::Diag` event with the ID and the state code. The ID is a `uint8_t` and must be unique across the components using this feature. The ID also defines the order of the component in the process of communication. 
 
-For example, 
+- 1 - the component works normally;
+- 2 - 4 - the component is in the intermediate state (in the process of performing an operation that is going to result in success or failure, for example, connecting to server);
+- 4 - 6 - the component is experiencing a temporary failure and is going to try again soon;
+- 7 and above - the component failed permanently.
+  When the state change occurs, the component fires `event::Diag` event with the ID and the state code. The ID is a `uint8_t` and must be unique across the components using this feature. The ID also defines the order of the component in the process of communication.
+
+For example,
 
 Usage:
 
@@ -433,4 +437,5 @@ Usage:
 
 debug::useSysled();
 ```
+
 This example assumes LED is connected to IO2. If you use different pin - just pass it to `debug::useSysled()`.
