@@ -207,7 +207,7 @@ If you want to initialize `I2C` instance with custom `SDA`/`SCL` pins:
 
 ```cpp
 ...
-#include <esp32m/bus/scanner/i2c.hpp>
+#include <esp32m/bus/i2c.hpp>
 
 auto i2c_dev = new I2C(<device_address>, I2C_NUM_0, <SDA>, <SCL>);
 
