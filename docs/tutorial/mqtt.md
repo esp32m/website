@@ -25,6 +25,9 @@ Add the following code to your `main.cpp` to enable MQTT API:
 ...
 
 net::useMqtt();
+
+// If you also want to enable UI for MQTT
+new Ui(&ui::Mqtt::instance());
 ```
 
 In the UI:
