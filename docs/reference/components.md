@@ -194,6 +194,27 @@ auto pcfPin1 = pcf->pin(1);
 
 ESP32 Manager features `I2C` class with thread-safe methods to access I2C bus from multiple threads. `I2C` instance facilitates communication with a device at given I2C address. It provides synchronization features to access single device from multiple threads.
 
+This is how to initialize `I2C` instance with board default `SDA`/`SCL` pins:
+
+```cpp
+...
+#include <esp32m/bus/scanner/i2c.hpp>
+
+useI2C();
+```
+
+If you want to initialize `I2C` instance with custom `SDA`/`SCL` pins:
+
+```cpp
+...
+#include <esp32m/bus/i2c.hpp>
+
+auto i2c_dev = new I2C(<device_address>, I2C_NUM_0, <SDA>, <SCL>);
+
+// Now you can pass this instance to a device for example:
+// new dev::Bme280(i2c_dev, "BME280");
+```
+
 ### 1Wire
 
 One-Wire driver is based on David Antliff's [esp32-owb](//github.com/DavidAntliff/esp32-owb) component and uses [RMT](//docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/rmt.html) for reliable operation. One-Wire protocol is used mainly by DS18B20 and similar temperature sensors.
