@@ -29,7 +29,8 @@ udp6       0      0 :::514                  :::*                                
 
 ### Appender setup
 
-Add the following code to your `main.cpp` to enable UDP logging to **rsyslog**:
+Add `CONFIG_ESP32M_LOG_UDP=y` to your `sdkconfig` to enable UDP logging to **rsyslog**.
+Alternatively, add the following code to your `main.cpp`:
 
 ```cpp
 #include <esp32m/log/udp.hpp>
@@ -53,7 +54,7 @@ Refer to [MQTT setup](/docs/tutorial/mqtt) tutorial page for details.
 
 ### Appender setup
 
-Add the following code to your `main.cpp` to enable UDP logging to **rsyslog**:
+Add the following code to your `main.cpp` to enable UDP logging to **mqtt**:
 
 ```cpp
 #include <esp32m/log/mqtt.hpp>

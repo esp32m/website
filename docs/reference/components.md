@@ -13,14 +13,10 @@ What's wrong with ESP_IDF [Logging library](//docs.espressif.com/projects/esp-id
 The following appenders are currently implemented:
 
 - console appender, simply sends all output to UART0, just like the ESP-IDF logger does.
-
-```cpp
-#include <esp32m/log/console.hpp>
-...
-log::addAppender(log::Console::instance());
-```
+  Console appender is added by default. If you don't want to add it - unset `CONFIG_ESP32M_LOG_CONSOLE` in your `sdkconfig`.
 
 - UDP appender, sends log messages to **rsyslog** server or any other UDP endpoint, either in **rsyslog** format, or in plain text.
+  UDP appender can be added using `CONFIG_ESP32M_LOG_UDP` in `sdkconfig`, or in the code:
 
 ```cpp
 #include <esp32m/log/udp.hpp>
@@ -70,8 +66,8 @@ You can add as many appenders as you need.
 
 There are two methods to redirect messages to our logger:
 
-- `void log::hookEsp32Logger(bool install=true)` - uses [esp_log_set_vprintf()](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/log.html#_CPPv419esp_log_set_vprintf14vprintf_like_t) to redirect ESP-IDF log output.
-- `void log::hookUartLogger(int bufsize = 128);` - intercepts all output to UART0 via ESP32 ROM function. This is useful if you want to redirect messages that don't use ESP-IDF logging library.
+- `void log::hookEsp32Logger(bool install=true)` - uses [esp_log_set_vprintf()](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/log.html#_CPPv419esp_log_set_vprintf14vprintf_like_t) to redirect ESP-IDF log output. This interception is turned on by default and can be disabled by unsetting `CONFIG_ESP32M_LOG_HOOK_ESPIDF` in your `sdkconfig`
+- `void log::hookUartLogger(int bufsize = 128);` - intercepts all output to UART0 via ESP32 ROM function. This is useful if you want to redirect messages that don't use ESP-IDF logging library. This is off by default, but can be turned on with `CONFIG_ESP32M_LOG_HOOK_UART` in `sdkconfig`
 
 You can use either method, or both at the same time, depending on your needs. However, there are cases these methods cannot handle. For example, direct writes to ESP32 memory-mapped I/O registers cannot be intercepted and redirected. ESP-IDF panic handler and some other error handlers do that, unfortunately.
 
