@@ -53,14 +53,14 @@ log::addBufferedAppender(new log::Vfs("/spiffs/log-file.txt"));
 - UART appender - the same as _console appender_, but can output to UART2 or UART1.
 
 ```cpp
-#include <esp32m/log/uard.hpp>
+#include <esp32m/log/uart.hpp>
 ...
 log::addAppender(new log::Uart(2));
 ```
 
 You can add as many appenders as you need.
 
-`void addBufferedAppender()` accounts for appenders that may need some time to initialize, before they are able to accept messages (for example, connect to network server, mount filesystem, etc.). It checks if the appender is ready, and if not - saves the messages to a temporary buffer. Once the appender is fully initialized, the contents of the buffer is automatically forwarded to the appender, and the buffer is released.
+`void addBufferedAppender()` accounts for appenders that may need some time to initialize, before they are able to accept messages (for example, connect to a network server, mount filesystem, etc.). It checks if the appender is ready, and if not - saves the messages to a temporary buffer. Once the appender is fully initialized, the contents of the buffer is automatically forwarded to the appender, and the buffer is released.
 
 ### Intercepting output
 
@@ -71,7 +71,7 @@ There are two methods to redirect messages to our logger:
 
 You can use either method, or both at the same time, depending on your needs. However, there are cases these methods cannot handle. For example, direct writes to ESP32 memory-mapped I/O registers cannot be intercepted and redirected. ESP-IDF panic handler and some other error handlers do that, unfortunately.
 
-### Optimising performance
+### Optimizing performance
 
 If you have time-critical tasks that may suffer from additional delays introduced by network/vfs I/O, it is possible to decouple logging from the actual output.
 `void log::useQueue(int size=1024)` adds a buffering layer, that allows the calling thread to proceed immediately, without blocking, and actual I/O will take place in another thread. The default size of the buffer is 1024 bytes, may be changed by passing the second parameter to the call.
