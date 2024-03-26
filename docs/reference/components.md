@@ -60,7 +60,7 @@ log::addAppender(new log::Uart(2));
 
 You can add as many appenders as you need.
 
-`void addBufferedAppender()` accounts for appenders that may need some time to initialize, before they are able to accept messages (for example, connect to a network server, mount filesystem, etc.). It checks if the appender is ready, and if not - saves the messages to a temporary buffer. Once the appender is fully initialized, the contents of the buffer is automatically forwarded to the appender, and the buffer is released.
+`void addBufferedAppender()` accounts for appenders that may need some time to initialize, before they can accept messages (for example, connect to a network server, mount filesystem, etc.). It checks if the appender is ready, and if not - saves the messages to a temporary buffer. Once the appender is fully initialized, the content of the buffer is automatically forwarded to the appender, and the buffer is released.
 
 ### Intercepting output
 
@@ -74,13 +74,13 @@ You can use either method, or both at the same time, depending on your needs. Ho
 ### Optimizing performance
 
 If you have time-critical tasks that may suffer from additional delays introduced by network/vfs I/O, it is possible to decouple logging from the actual output.
-`void log::useQueue(int size=1024)` adds a buffering layer, that allows the calling thread to proceed immediately, without blocking, and actual I/O will take place in another thread. The default size of the buffer is 1024 bytes, may be changed by passing the second parameter to the call.
+`void log::useQueue(int size=1024)` adds a buffering layer, that allows the calling thread to proceed immediately, without blocking, and actual I/O will take place in another thread. The default size of the buffer is 1024 bytes, it may be changed by passing the second parameter to the call.
 
 ## Event manager
 
 Event manager is at the heart of **esp32m**, it facilitates asynchronous communication between the tasks inside the **esp32m** application, as well as interaction with the outer world via the API.
 
-Event manager implements publish-subscribe mechanism, passing events from publishers to the interested parties (subscribers).
+Event manager implements a publish-subscribe mechanism, passing events from publishers to the interested parties (subscribers).
 
 Event manager is represented by a singleton instance of `EventManager` class that has only two methods:
 
@@ -309,7 +309,7 @@ import { startUi, DebugPins } from "@esp32m/ui";
 
 ...
 
-startUi({ plugins: [DebugPins] });
+startUi({ plugins: [DebugPins()] });
 ```
 
 ![](../../static/img/gpio.png)

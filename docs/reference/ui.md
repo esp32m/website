@@ -20,7 +20,7 @@ If you want to completely strip the UI static files (html+javascript) from the f
 
 - remove `"web-ui"` from `EXTRA_COMPONENT_DIRS` in `CMakeLists.txt`
 - remove `web-ui` from `PRIV_REQUIRES` in `main/CMakeLists.txt`
-- in `main/main.cpp`, remove `#include <ui.hpp>` and replace `initUi(new Ui(new ui::Httpd()));` with `new Ui(new ui::Httpd());`
+- in `main/main.cpp`, remove `#include <dist/ui.hpp>` and replace `initUi(new Ui(new ui::Httpd()));` with `new Ui(new ui::Httpd());`
 
 This will remove compiled javascript and HTML files from the firmware, but will keep the Websocket server on the chip, allowing you to connect remotely with the IP address as explained above.
 

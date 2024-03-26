@@ -56,7 +56,7 @@ module.exports = {
             },
             {
               label: 'Telegram',
-              href: 'https://t.me/esp32m',
+              href: 'https://t.me/esp32mg',
             },
           ],
         },

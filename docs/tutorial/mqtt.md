@@ -21,6 +21,7 @@ Add the following code to your `main.cpp` to enable MQTT API:
 
 ```cpp
 #include <esp32m/net/mqtt.hpp>
+#include <esp32m/ui/mqtt.hpp>
 
 ...
 
